@@ -22,10 +22,13 @@
         </activity>
 
         <activity android:name=".OnboardingActivity"/>
-        <activity android:name=".HomepageActivity"/>
-        <activity android:name=".SeatSelectionActivity"/>
-        <activity android:name=".SnacksActivity"/>
-        <activity android:name=".BookingDetailsActivity"/>
+        <activity android:name=".MainActivity"/>
+
+        <!-- Old activities kept for reference (commented out) -->
+        <!-- <activity android:name=".HomepageActivity"/> -->
+        <!-- <activity android:name=".SeatSelectionActivity"/> -->
+        <!-- <activity android:name=".SnacksActivity"/> -->
+        <!-- <activity android:name=".BookingDetailsActivity"/> -->
 
     </application>
 </manifest>
