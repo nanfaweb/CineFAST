@@ -73,8 +73,15 @@ public class SeatSelectionActivity extends AppCompatActivity {
             if (selectedCount == 0) {
                 Toast.makeText(this, R.string.select_at_least_one_seat, Toast.LENGTH_SHORT).show();
             } else {
-                Toast.makeText(this, R.string.booking_confirmed, Toast.LENGTH_SHORT).show();
-                // TODO: Navigate to Ticket Summary Screen
+                Intent intent = new Intent(SeatSelectionActivity.this, BookingDetailsActivity.class);
+                intent.putExtra("MOVIE_NAME", tvMovieTitle.getText().toString());
+                intent.putExtra("POSTER_RESOURCE_ID", posterResourceId);
+                intent.putExtra("SELECTED_SEAT_COUNT", selectedCount);
+                intent.putExtra("TICKET_PRICE", selectedCount * PRICE_PER_SEAT);
+                intent.putExtra("SNACKS_TOTAL", 0.0);
+                intent.putStringArrayListExtra("SNACKS_LIST", new ArrayList<>());
+                intent.putStringArrayListExtra("SELECTED_SEATS", selectedSeatNames);
+                startActivity(intent);
             }
         });
 

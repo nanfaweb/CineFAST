@@ -57,6 +57,9 @@ public class SnacksActivity extends AppCompatActivity {
         snacks.add(new SnackItem("Soft Drink", "Large / Any Flavor", 100));
         snacks.add(new SnackItem("Candy Mix", "Assorted Candies", 120));
 
+        // Back button
+        findViewById(R.id.btnBack).setOnClickListener(v -> finish());
+
         // Bind UI
         setupSnackItem(0, R.id.snackPopcorn);
         setupSnackItem(1, R.id.snackNachos);

@@ -88,7 +88,8 @@
             android:layout_width="32dp"
             android:layout_height="32dp"
             android:background="@drawable/btn_red_rect"
-             android:src="@android:drawable/ic_input_add"
+             android:src="@drawable/ic_add"
+             android:tint="@color/white"
              android:padding="8dp"
             android:scaleType="fitCenter"/>
     </LinearLayout>
