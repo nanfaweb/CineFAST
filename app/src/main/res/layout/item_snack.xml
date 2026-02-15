@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/snack_item_bg"
+    android:padding="16dp">
+
+    <!-- Snack Image Placeholder -->
+    <View
+        android:id="@+id/snackImage"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:background="@drawable/btn_gray_rect"
+        android:layout_alignParentStart="true"
+        android:layout_centerVertical="true"
+        android:layout_marginEnd="16dp"/>
+
+    <!-- Details Column -->
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/snackImage"
+        android:layout_toStartOf="@id/layoutQuantity"
+        android:layout_centerVertical="true"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/snackName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Item Name"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/snackDesc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Description"
+            android:textColor="#AAAAAA"
+            android:textSize="12sp"
+            android:layout_marginTop="2dp"/>
+
+        <TextView
+            android:id="@+id/snackPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="$0.00"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:layout_marginTop="8dp"/>
+    </LinearLayout>
+
+    <!-- Quantity Controls -->
+    <LinearLayout
+        android:id="@+id/layoutQuantity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_alignBottom="@id/snackImage">
+
+        <ImageButton
+            android:id="@+id/btnMinus"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:background="@drawable/btn_gray_rect"
+            android:src="@android:drawable/ic_input_delete" 
+            android:tint="@color/white"
+            android:padding="8dp"
+            android:scaleType="fitCenter"/>
+
+        <TextView
+            android:id="@+id/tvQuantity"
+            android:layout_width="30dp"
+            android:layout_height="wrap_content"
+            android:text="0"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:gravity="center"
+            android:layout_marginHorizontal="8dp"/>
+
+        <ImageButton
+            android:id="@+id/btnPlus"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:background="@drawable/btn_red_rect"
+             android:src="@android:drawable/ic_input_add"
+            android:tint="@color/white"
+             android:padding="8dp"
+            android:scaleType="fitCenter"/>
+    </LinearLayout>
+
+</RelativeLayout>

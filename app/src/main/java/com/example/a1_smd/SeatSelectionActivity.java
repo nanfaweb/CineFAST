@@ -6,6 +6,7 @@ import android.widget.Button;
 import android.widget.GridLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.content.Intent;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -68,10 +69,13 @@ public class SeatSelectionActivity extends AppCompatActivity {
             }
         });
 
-        // Proceed to Snacks button – disabled until ≥1 seat selected
+        // Proceed to Snacks button
         btnProceedSnacks.setOnClickListener(v -> {
-            Toast.makeText(this, R.string.proceed_to_snacks, Toast.LENGTH_SHORT).show();
-            // TODO: Navigate to Snacks & Drinks Screen
+            Intent intent = new Intent(SeatSelectionActivity.this, SnacksActivity.class);
+            intent.putExtra("MOVIE_NAME", tvMovieTitle.getText().toString());
+            intent.putExtra("SELECTED_SEAT_COUNT", selectedCount);
+            intent.putExtra("TOTAL_PRICE", selectedCount * PRICE_PER_SEAT);
+            startActivity(intent);
         });
     }
 
