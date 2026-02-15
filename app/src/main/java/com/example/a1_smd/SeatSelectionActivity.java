@@ -35,8 +35,10 @@ public class SeatSelectionActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_seat_selection);
 
-        // Receive movie name from intent
+
+        // Receive movie name and poster resource ID from intent
         String movieName = getIntent().getStringExtra("MOVIE_NAME");
+        int posterResourceId = getIntent().getIntExtra("POSTER_RESOURCE_ID", R.drawable.movie_poster_1);
         TextView tvMovieTitle = findViewById(R.id.tvMovieTitle);
         if (movieName != null) {
             tvMovieTitle.setText(movieName);
@@ -73,6 +75,7 @@ public class SeatSelectionActivity extends AppCompatActivity {
         btnProceedSnacks.setOnClickListener(v -> {
             Intent intent = new Intent(SeatSelectionActivity.this, SnacksActivity.class);
             intent.putExtra("MOVIE_NAME", tvMovieTitle.getText().toString());
+            intent.putExtra("POSTER_RESOURCE_ID", posterResourceId); // Forward poster resource ID
             intent.putExtra("SELECTED_SEAT_COUNT", selectedCount);
             intent.putExtra("TOTAL_PRICE", selectedCount * PRICE_PER_SEAT);
             startActivity(intent);

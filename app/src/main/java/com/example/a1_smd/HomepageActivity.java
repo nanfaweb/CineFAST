@@ -66,12 +66,30 @@ public class HomepageActivity extends AppCompatActivity {
         setBookButton(R.id.btnBookDemonSlayer, getString(R.string.movie_5_title));
     }
 
+
+    /**
+     * Set up the Book Seats button to send both the movie name and the correct poster resource ID.
+     */
     private void setBookButton(int buttonId, String movieTitle) {
         Button button = findViewById(buttonId);
         if (button != null) {
             button.setOnClickListener(v -> {
                 Intent intent = new Intent(HomepageActivity.this, SeatSelectionActivity.class);
                 intent.putExtra("MOVIE_NAME", movieTitle);
+                // Pass the correct poster resource ID based on the movie
+                int posterResId = R.drawable.movie_poster_1;
+                if (movieTitle.equals(getString(R.string.movie_1_title))) {
+                    posterResId = R.drawable.movie_poster_1;
+                } else if (movieTitle.equals(getString(R.string.movie_2_title))) {
+                    posterResId = R.drawable.movie_poster_2;
+                } else if (movieTitle.equals(getString(R.string.movie_3_title))) {
+                    posterResId = R.drawable.movie_poster_3;
+                } else if (movieTitle.equals(getString(R.string.movie_4_title))) {
+                    posterResId = R.drawable.movie_poster_4;
+                } else if (movieTitle.equals(getString(R.string.movie_5_title))) {
+                    posterResId = R.drawable.movie_poster_5;
+                }
+                intent.putExtra("POSTER_RESOURCE_ID", posterResId);
                 startActivity(intent);
             });
         }

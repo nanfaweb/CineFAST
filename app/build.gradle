@@ -28,6 +28,21 @@ android {
     }
 }
 
+// Fix for "task 'testClasses' not found" error
+// Using afterEvaluate because Android tasks are created during the evaluation phase
+afterEvaluate {
+    if (tasks.findByName("testDebugUnitTestClasses")) {
+        tasks.register("testClasses") {
+            dependsOn "testDebugUnitTestClasses"
+        }
+    } else {
+        // Fallback or generic task if specific one isn't found immediately
+        tasks.register("testClasses") {
+            dependsOn tasks.matching { it.name.endsWith("UnitTestClasses") }
+        }
+    }
+}
+
 dependencies {
     implementation libs.appcompat
     implementation libs.material

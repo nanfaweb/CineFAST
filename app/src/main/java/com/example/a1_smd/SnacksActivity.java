@@ -22,11 +22,11 @@ public class SnacksActivity extends AppCompatActivity {
     public static class SnackItem implements Serializable {
         String name;
         String description;
-        double price;
+        int price;
         int quantity;
         int imageResId; // Placeholder
 
-        public SnackItem(String name, String description, double price) {
+        public SnackItem(String name, String description, int price) {
             this.name = name;
             this.description = description;
             this.price = price;
@@ -45,14 +45,17 @@ public class SnacksActivity extends AppCompatActivity {
 
         // Get data from previous activity
         movieName = getIntent().getStringExtra("MOVIE_NAME");
+
         selectedSeatCount = getIntent().getIntExtra("SELECTED_SEAT_COUNT", 0);
         ticketPrice = getIntent().getIntExtra("TOTAL_PRICE", 0);
+        // Get poster resource ID from intent
+        int posterResourceId = getIntent().getIntExtra("POSTER_RESOURCE_ID", R.drawable.movie_poster_1);
 
         // Initialize Data
-        snacks.add(new SnackItem("Popcorn", "Large / Buttered", 8.99));
-        snacks.add(new SnackItem("Nachos", "With Cheese Dip", 7.99));
-        snacks.add(new SnackItem("Soft Drink", "Large / Any Flavor", 5.99));
-        snacks.add(new SnackItem("Candy Mix", "Assorted Candies", 6.99));
+        snacks.add(new SnackItem("Popcorn", "Large / Buttered", 250));
+        snacks.add(new SnackItem("Nachos", "With Cheese Dip", 270));
+        snacks.add(new SnackItem("Soft Drink", "Large / Any Flavor", 100));
+        snacks.add(new SnackItem("Candy Mix", "Assorted Candies", 120));
 
         // Bind UI
         setupSnackItem(0, R.id.snackPopcorn);
@@ -64,6 +67,7 @@ public class SnacksActivity extends AppCompatActivity {
         btnConfirm.setOnClickListener(v -> {
             Intent intent = new Intent(SnacksActivity.this, BookingDetailsActivity.class);
             intent.putExtra("MOVIE_NAME", movieName);
+            intent.putExtra("POSTER_RESOURCE_ID", posterResourceId); // Forward poster resource ID
             intent.putExtra("SELECTED_SEAT_COUNT", selectedSeatCount);
             intent.putExtra("TICKET_PRICE", ticketPrice);
 
@@ -73,7 +77,7 @@ public class SnacksActivity extends AppCompatActivity {
             for (SnackItem item : snacks) {
                 if (item.quantity > 0) {
                     totalSnacks += (item.price * item.quantity);
-                    snackDetails.add(item.quantity + "x " + item.name + " ($" + (item.price * item.quantity) + ")");
+                    snackDetails.add(item.quantity + "x " + item.name + " (PKR " + (item.price * item.quantity) + ")");
                 }
             }
             intent.putExtra("SNACKS_TOTAL", totalSnacks);
@@ -97,7 +101,7 @@ public class SnacksActivity extends AppCompatActivity {
 
         tvName.setText(item.name);
         tvDesc.setText(item.description);
-        tvPrice.setText("$" + item.price);
+        tvPrice.setText("PKR " + item.price);
         tvQty.setText(String.valueOf(item.quantity));
 
         // Set color for placeholder based on item to distinguish them since we don't

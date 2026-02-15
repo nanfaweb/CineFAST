@@ -33,7 +33,6 @@
     <string name="movie_4_details">Thriller / 106 min</string>
     <string name="movie_5_details">Anime / 155 min</string>
 
-    <!-- Seat Selection Screen -->
     <string name="proceed_to_snacks">Proceed to Snacks</string>
     <string name="total_label">Total: PKR %1$d</string>
     <string name="seats_selected_label">%1$d seat(s) selected</string>
@@ -41,17 +40,20 @@
     <string name="seat_yours_label">Yours</string>
     <string name="seat_available_label">Available</string>
     <string name="theater_name">Cue Cinemas</string>
-    <string name="hall_name">1st</string>
-    <string name="show_date">13.04.2025</string>
-    <string name="show_time">22:15</string>
+    <string name="hall_name">7</string>
+    <string name="show_date">15.02.2026</string>
+    <string name="show_time">21:00</string>
     <string name="screen_label">Screen</string>
     <string name="badge_13">+13</string>
     <string name="badge_en">EN</string>
-    <string name="badge_screenx">ScreenX</string>
+    <string name="badge_screenx">Screen X</string>
     <string name="booking_confirmed">Booking Confirmed!</string>
-    <string name="select_at_least_one_seat">Please select at least one seat</string>
+    <string name="select_at_least_one_seat">Please select at least one seat!</string>
     <string name="theater_label">Theater</string>
     <string name="hall_label">Hall</string>
     <string name="date_label">Date</string>
     <string name="time_label">Time</string>
+    <string name="screen_number">Screen X</string>
+    <string name="audio_format_dolby_atmos">Dolby Atmos</string>
+    <string name="no_snacks_selected">No snacks selected</string>
 </resources>
