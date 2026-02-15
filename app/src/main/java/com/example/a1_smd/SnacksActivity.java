@@ -83,6 +83,10 @@ public class SnacksActivity extends AppCompatActivity {
             intent.putExtra("SNACKS_TOTAL", totalSnacks);
             intent.putStringArrayListExtra("SNACKS_LIST", snackDetails);
 
+            // Pass selected seats to next activity
+            ArrayList<String> selectedSeats = getIntent().getStringArrayListExtra("SELECTED_SEATS");
+            intent.putStringArrayListExtra("SELECTED_SEATS", selectedSeats);
+
             startActivity(intent);
         });
     }

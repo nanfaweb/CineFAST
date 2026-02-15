@@ -56,4 +56,23 @@
     <string name="screen_number">Screen X</string>
     <string name="audio_format_dolby_atmos">Dolby Atmos</string>
     <string name="no_snacks_selected">No snacks selected</string>
+    <string name="back_button_desc">Back</string>
+    <string name="menu_button_desc">Menu</string>
+    <string name="movie_title_placeholder">Movie Title</string>
+    <string name="select_items_title">Select Items</string>
+    <string name="snacks_drinks_title">Snacks &amp; Drinks</string>
+    <string name="confirm_button_text">Confirm</string>
+    <string name="item_name_placeholder">Item Name</string>
+    <string name="item_desc_placeholder">Description</string>
+    <string name="price_placeholder">PKR 0</string>
+    <string name="booking_details_title">Booking Details</string>
+    <string name="tickets_label">Tickets</string>
+    <string name="snacks_label">Snacks</string>
+    <string name="total_caps_label">TOTAL</string>
+    <string name="send_ticket_button">Send Ticket</string>
+    <string name="theater_icon_desc">Theater</string>
+    <string name="hall_icon_desc">Hall</string>
+    <string name="date_icon_desc">Date</string>
+    <string name="time_icon_desc">Time</string>
+    <string name="movie_poster_desc">Movie Poster</string>
 </resources>

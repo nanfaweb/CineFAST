@@ -28,7 +28,7 @@
             android:id="@+id/snackName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Item Name"
+            android:text="@string/item_name_placeholder"
             android:textColor="@color/white"
             android:textSize="18sp"
             android:textStyle="bold"/>
@@ -37,7 +37,7 @@
             android:id="@+id/snackDesc"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Description"
+            android:text="@string/item_desc_placeholder"
             android:textColor="#AAAAAA"
             android:textSize="12sp"
             android:layout_marginTop="2dp"/>
@@ -46,7 +46,7 @@
             android:id="@+id/snackPrice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="PKR 0"
+            android:text="@string/price_placeholder"
             android:textColor="@color/white"
             android:textSize="16sp"
             android:textStyle="bold"
@@ -69,8 +69,7 @@
             android:layout_width="32dp"
             android:layout_height="32dp"
             android:background="@drawable/btn_gray_rect"
-            android:src="@android:drawable/ic_input_delete" 
-            android:tint="@color/white"
+            android:src="@drawable/ic_remove"
             android:padding="8dp"
             android:scaleType="fitCenter"/>
 
@@ -90,7 +89,6 @@
             android:layout_height="32dp"
             android:background="@drawable/btn_red_rect"
              android:src="@android:drawable/ic_input_add"
-            android:tint="@color/white"
              android:padding="8dp"
             android:scaleType="fitCenter"/>
     </LinearLayout>

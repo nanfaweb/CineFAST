@@ -34,7 +34,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Booking Details"
+            android:text="@string/booking_details_title"
             android:textColor="@color/white"
             android:textSize="20sp"
             android:textStyle="bold"
@@ -82,7 +82,7 @@
                 android:layout_height="120dp"
                 android:scaleType="centerCrop"
                 android:layout_marginEnd="12dp"
-                android:contentDescription="Movie Poster"
+                android:contentDescription="@string/movie_poster_desc"
                 android:src="@drawable/movie_poster_1"/>
 
             <!-- Movie Details -->
@@ -97,7 +97,7 @@
                     android:id="@+id/tvMovieName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Movie Name"
+                    android:text="@string/movie_title_placeholder"
                     android:textColor="@color/white"
                     android:textSize="18sp"
                     android:textStyle="bold"
@@ -172,13 +172,13 @@
                     android:layout_width="24dp"
                     android:layout_height="24dp"
                     android:src="@drawable/ic_theater"
-                    android:contentDescription="Theater"
+                    android:contentDescription="@string/theater_icon_desc"
                     android:layout_marginBottom="4dp"/>
                 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Theater"
+                    android:text="@string/theater_label"
                     android:textColor="@color/secondary_text"
                     android:textSize="12sp"
                     android:layout_marginBottom="4dp"/>
@@ -207,13 +207,13 @@
                     android:layout_width="24dp"
                     android:layout_height="24dp"
                     android:src="@drawable/ic_hall"
-                    android:contentDescription="Hall"
+                    android:contentDescription="@string/hall_icon_desc"
                     android:layout_marginBottom="4dp"/>
                 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Hall"
+                    android:text="@string/hall_label"
                     android:textColor="@color/secondary_text"
                     android:textSize="12sp"
                     android:layout_marginBottom="4dp"/>
@@ -241,13 +241,13 @@
                     android:layout_width="24dp"
                     android:layout_height="24dp"
                     android:src="@drawable/ic_calendar"
-                    android:contentDescription="Date"
+                    android:contentDescription="@string/date_icon_desc"
                     android:layout_marginBottom="4dp"/>
                 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Date"
+                    android:text="@string/date_label"
                     android:textColor="@color/secondary_text"
                     android:textSize="12sp"
                     android:layout_marginBottom="4dp"/>
@@ -276,13 +276,13 @@
                     android:layout_height="24dp"
                     android:src="@drawable/ic_clock"
                     app:tint="@color/secondary_text"
-                    android:contentDescription="Time"
+                    android:contentDescription="@string/time_icon_desc"
                     android:layout_marginBottom="4dp"/>
                 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Time"
+                    android:text="@string/time_label"
                     android:textColor="@color/secondary_text"
                     android:textSize="12sp"
                     android:layout_marginBottom="4dp"/>
@@ -303,7 +303,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Tickets"
+            android:text="@string/tickets_label"
             android:textColor="@color/white"
             android:textSize="16sp"
             android:textStyle="bold"
@@ -321,7 +321,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Snacks"
+            android:text="@string/snacks_label"
             android:textColor="@color/white"
             android:textSize="16sp"
             android:textStyle="bold"
@@ -353,7 +353,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="TOTAL"
+                android:text="@string/total_caps_label"
                 android:textColor="@color/white"
                 android:textSize="18sp"
                 android:textStyle="bold"/>
@@ -362,7 +362,7 @@
                 android:id="@+id/tvFinalTotal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="0 PKR"
+                android:text="@string/price_placeholder"
                 android:textColor="@color/white"
                 android:textSize="18sp"
                 android:textStyle="bold"/>
@@ -376,7 +376,7 @@
         android:id="@+id/btnSendTicket"
         android:layout_width="match_parent"
         android:layout_height="56dp"
-        android:text="Send Ticket"
+        android:text="@string/send_ticket_button"
         android:textColor="@color/white"
         android:textSize="16sp"
         android:textAllCaps="false"

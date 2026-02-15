@@ -9,7 +9,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Select Items"
+        android:text="@string/select_items_title"
         android:textColor="#AAAAAA"
         android:textSize="14sp"
         android:layout_marginTop="16dp"/>
@@ -17,7 +17,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Snacks &amp; Drinks"
+        android:text="@string/snacks_drinks_title"
         android:textColor="@color/white"
         android:textSize="24sp"
         android:textStyle="bold"
@@ -58,7 +58,7 @@
         android:id="@+id/btnConfirmSnacks"
         android:layout_width="match_parent"
         android:layout_height="56dp"
-        android:text="Confirm"
+        android:text="@string/confirm_button_text"
         android:textColor="@color/white"
         android:textSize="16sp"
         android:textAllCaps="false"
