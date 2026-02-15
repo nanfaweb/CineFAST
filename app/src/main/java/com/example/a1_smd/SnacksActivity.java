@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -24,14 +25,14 @@ public class SnacksActivity extends AppCompatActivity {
         String description;
         int price;
         int quantity;
-        int imageResId; // Placeholder
+        int imageResId;
 
-        public SnackItem(String name, String description, int price) {
+        public SnackItem(String name, String description, int price, int imageResId) {
             this.name = name;
             this.description = description;
             this.price = price;
+            this.imageResId = imageResId;
             this.quantity = 0;
-            this.imageResId = 0; // Set manually
         }
     }
 
@@ -52,10 +53,10 @@ public class SnacksActivity extends AppCompatActivity {
         int posterResourceId = getIntent().getIntExtra("POSTER_RESOURCE_ID", R.drawable.movie_poster_1);
 
         // Initialize Data
-        snacks.add(new SnackItem("Popcorn", "Large / Buttered", 250));
-        snacks.add(new SnackItem("Nachos", "With Cheese Dip", 270));
-        snacks.add(new SnackItem("Soft Drink", "Large / Any Flavor", 100));
-        snacks.add(new SnackItem("Candy Mix", "Assorted Candies", 120));
+        snacks.add(new SnackItem("Popcorn", "Large / Buttered", 250, R.drawable.popcorn_img));
+        snacks.add(new SnackItem("Nachos", "With Cheese Dip", 270, R.drawable.nachos_img));
+        snacks.add(new SnackItem("Soft Drink", "Large / Any Flavor", 100, R.drawable.softdrink_img));
+        snacks.add(new SnackItem("Candy Mix", "Assorted Candies", 120, R.drawable.candymix_img));
 
         // Back button
         findViewById(R.id.btnBack).setOnClickListener(v -> finish());
@@ -104,29 +105,13 @@ public class SnacksActivity extends AppCompatActivity {
         TextView tvQty = view.findViewById(R.id.tvQuantity);
         ImageButton btnMinus = view.findViewById(R.id.btnMinus);
         ImageButton btnPlus = view.findViewById(R.id.btnPlus);
-        View imgPlaceholder = view.findViewById(R.id.snackImage);
+        ImageView imgSnack = view.findViewById(R.id.snackImage);
 
         tvName.setText(item.name);
         tvDesc.setText(item.description);
         tvPrice.setText("PKR " + item.price);
         tvQty.setText(String.valueOf(item.quantity));
-
-        // Set color for placeholder based on item to distinguish them since we don't
-        // have images
-        switch (index) {
-            case 0:
-                imgPlaceholder.setBackgroundColor(0xFFFFD700);
-                break; // Gold (Popcorn)
-            case 1:
-                imgPlaceholder.setBackgroundColor(0xFFFFA500);
-                break; // Orange (Nachos)
-            case 2:
-                imgPlaceholder.setBackgroundColor(0xFFFF0000);
-                break; // Red (Coke)
-            case 3:
-                imgPlaceholder.setBackgroundColor(0xFF800080);
-                break; // Purple (Candy)
-        }
+        imgSnack.setImageResource(item.imageResId);
 
         quantityViews[index] = tvQty;
 
