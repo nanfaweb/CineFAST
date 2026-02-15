@@ -57,6 +57,24 @@ public class HomepageActivity extends AppCompatActivity {
 
         setTrailer(R.id.btnTrailerDemonSlayer,
                 "https://youtu.be/x7uLutVRBfI");
+
+        // Wire up Book Seats buttons with explicit intents
+        setBookButton(R.id.btnBookGodfather, getString(R.string.movie_1_title));
+        setBookButton(R.id.btnBookGodfatherII, getString(R.string.movie_2_title));
+        setBookButton(R.id.btnBookGodfatherIII, getString(R.string.movie_3_title));
+        setBookButton(R.id.btnBookUsualSuspects, getString(R.string.movie_4_title));
+        setBookButton(R.id.btnBookDemonSlayer, getString(R.string.movie_5_title));
+    }
+
+    private void setBookButton(int buttonId, String movieTitle) {
+        Button button = findViewById(buttonId);
+        if (button != null) {
+            button.setOnClickListener(v -> {
+                Intent intent = new Intent(HomepageActivity.this, SeatSelectionActivity.class);
+                intent.putExtra("MOVIE_NAME", movieTitle);
+                startActivity(intent);
+            });
+        }
     }
 
     private void setTrailer(int buttonId, String url) {
