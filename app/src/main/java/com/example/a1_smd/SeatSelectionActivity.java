@@ -199,5 +199,11 @@ public class SeatSelectionActivity extends AppCompatActivity {
         // Enable/disable Proceed to Snacks button
         btnProceedSnacks.setEnabled(selectedCount > 0);
         btnProceedSnacks.setAlpha(selectedCount > 0 ? 1.0f : 0.5f);
+
+        if (selectedCount > 0) {
+            btnProceedSnacks.setBackgroundResource(R.drawable.btn_filled_white_red_border);
+        } else {
+            btnProceedSnacks.setBackgroundResource(R.drawable.btn_outline_white);
+        }
     }
 }
