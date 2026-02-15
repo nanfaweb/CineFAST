@@ -1,0 +1,36 @@
+<resources>
+    <string name="app_name">A1_SMD</string>
+
+    <string name="cine_text_splash">Cine</string>
+    <string name="fast_text_splash">FAST</string>
+
+    <string name="get_started_text">Get Started</string>
+    <string name="title_text">Explore now</string>
+    <string name="subtitle_text">to experience the benefits</string>
+
+    <string name="now_showing_text">Now Showing</string>
+    <string name="select_date_text">Select Date</string>
+    <string name="today_text">Today</string>
+    <string name="tomorrow_text">Tomorrow</string>
+    <string name="book_seats_text">Book Seats</string>
+    <string name="trailer_text">▶ Trailer</string>
+
+    <string name="movie_1_title">The Godfather</string>
+    <string name="movie_2_title">The Godfather Part II</string>
+    <string name="movie_3_title">The Godfather Part III</string>
+    <string name="movie_4_title">The Usual Suspects</string>
+    <string name="movie_5_title">Demon Slayer: Infinity Castle</string>
+
+    <string name="movie_1_desc">The Godfather Poster</string>
+    <string name="movie_2_desc">The Godfather II Poster</string>
+    <string name="movie_3_desc">The Godfather III Poster</string>
+    <string name="movie_4_desc">The Usual Suspects Poster</string>
+    <string name="movie_5_desc">Demon Slayer Poster</string>
+
+    <string name="movie_1_details">Crime / 175 min</string>
+    <string name="movie_2_details">Crime / 202 min</string>
+    <string name="movie_3_details">Crime / 162 min</string>
+    <string name="movie_4_details">Thriller / 106 min</string>
+    <string name="movie_5_details">Anime / 155 min</string>
+
+</resources>
