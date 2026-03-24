@@ -6,7 +6,6 @@
     android:orientation="vertical"
     android:background="@color/black">
 
-    <!-- Header Section with Dark Background -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="56dp"
@@ -16,7 +15,6 @@
         android:paddingStart="16dp"
         android:paddingEnd="16dp">
 
-        <!-- Back button -->
         <ImageButton
             android:id="@+id/btnBack"
             android:layout_width="36dp"
@@ -29,7 +27,6 @@
             android:scaleType="centerInside"
             android:alpha="0.8"/>
 
-        <!-- Title -->
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -42,7 +39,6 @@
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"/>
 
-        <!-- Hamburger Menu Button -->
         <ImageButton
             android:id="@+id/btnMenu"
             android:layout_width="40dp"
@@ -53,7 +49,6 @@
             android:contentDescription="Menu" />
     </LinearLayout>
 
-    <!-- Main Content -->
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -66,7 +61,6 @@
             android:orientation="vertical"
             android:padding="16dp">
 
-        <!-- Movie Information Card -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -74,8 +68,7 @@
             android:background="@drawable/movie_card_bg"
             android:padding="12dp"
             android:layout_marginBottom="24dp">
-            
-            <!-- Movie Poster -->
+
             <ImageView
                 android:id="@+id/ivMoviePoster"
                 android:layout_width="80dp"
@@ -85,14 +78,12 @@
                 android:contentDescription="@string/movie_poster_desc"
                 android:src="@drawable/movie_poster_1"/>
 
-            <!-- Movie Details -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:gravity="start">
-                
-                <!-- Movie Title -->
+
                 <TextView
                     android:id="@+id/tvMovieName"
                     android:layout_width="wrap_content"
@@ -103,7 +94,6 @@
                     android:textStyle="bold"
                     android:layout_marginBottom="8dp"/>
 
-                <!-- Rating Badges -->
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -132,7 +122,6 @@
                         android:gravity="center"/>
                 </LinearLayout>
 
-                <!-- Screen Info -->
                 <TextView
                     android:id="@+id/tvScreen"
                     android:layout_width="wrap_content"
@@ -142,7 +131,6 @@
                     android:textSize="13sp"
                     android:layout_marginBottom="4dp"/>
 
-                <!-- Audio Format -->
                 <TextView
                     android:id="@+id/tvAudioFormat"
                     android:layout_width="wrap_content"
@@ -153,14 +141,12 @@
             </LinearLayout>
         </LinearLayout>
 
-        <!-- Booking Details Section (4 Columns) -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:layout_marginBottom="24dp">
 
-            <!-- Theater -->
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -195,7 +181,6 @@
                     android:maxLines="2"/>
             </LinearLayout>
 
-            <!-- Hall -->
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -229,7 +214,6 @@
                     android:gravity="center"/>
             </LinearLayout>
 
-            <!-- Date -->
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -263,7 +247,6 @@
                     android:gravity="center"/>
             </LinearLayout>
 
-            <!-- Time -->
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -299,7 +282,6 @@
             </LinearLayout>
         </LinearLayout>
 
-        <!-- Tickets Section Header -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -309,7 +291,6 @@
             android:textStyle="bold"
             android:layout_marginBottom="12dp"/>
 
-        <!-- Tickets List Container -->
         <LinearLayout
             android:id="@+id/layoutTicketsList"
             android:layout_width="match_parent"
@@ -317,7 +298,6 @@
             android:orientation="vertical"
             android:layout_marginBottom="24dp"/>
 
-        <!-- Snacks Section Header -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -327,7 +307,6 @@
             android:textStyle="bold"
             android:layout_marginBottom="12dp"/>
 
-        <!-- Snacks List Container -->
         <LinearLayout
             android:id="@+id/layoutSnacksList"
             android:layout_width="match_parent"
@@ -335,14 +314,12 @@
             android:orientation="vertical"
             android:layout_marginBottom="24dp"/>
 
-        <!-- Divider Line -->
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:background="#333333"
             android:layout_marginBottom="16dp"/>
 
-        <!-- Total Section -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -371,7 +348,6 @@
         </LinearLayout>
     </ScrollView>
 
-    <!-- Send Ticket Button (Fixed at Bottom) -->
     <Button
         android:id="@+id/btnSendTicket"
         android:layout_width="match_parent"

@@ -1,5 +1,6 @@
 package com.example.a1_smd;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -17,7 +18,6 @@ public class BookingDetailsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_booking_details);
 
-        // Get data from intent
         String movieName = getIntent().getStringExtra("MOVIE_NAME");
         int posterResourceId = getIntent().getIntExtra("POSTER_RESOURCE_ID", R.drawable.movie_poster_1);
         String theaterName = getIntent().getStringExtra("THEATER_NAME");
@@ -30,7 +30,6 @@ public class BookingDetailsActivity extends AppCompatActivity {
         ArrayList<String> snacksList = getIntent().getStringArrayListExtra("SNACKS_LIST");
         ArrayList<String> selectedSeats = getIntent().getStringArrayListExtra("SELECTED_SEATS");
 
-        // Bind Movie Information
         TextView tvMovieName = findViewById(R.id.tvMovieName);
         tvMovieName.setText(movieName);
 
@@ -43,7 +42,6 @@ public class BookingDetailsActivity extends AppCompatActivity {
         TextView tvAudioFormat = findViewById(R.id.tvAudioFormat);
         tvAudioFormat.setText(getString(R.string.audio_format_dolby_atmos));
 
-        // Bind Booking Details
         TextView tvTheaterName = findViewById(R.id.tvTheaterName);
         tvTheaterName.setText(theaterName != null ? theaterName : getString(R.string.theater_name));
 
@@ -56,11 +54,9 @@ public class BookingDetailsActivity extends AppCompatActivity {
         TextView tvTime = findViewById(R.id.tvTime);
         tvTime.setText(time != null ? time : getString(R.string.show_time));
 
-        // Populate Tickets List
         LinearLayout layoutTicketsList = findViewById(R.id.layoutTicketsList);
         if (selectedSeats != null && !selectedSeats.isEmpty()) {
             for (String seat : selectedSeats) {
-                // seat format: "Row A, Seat 5" or similar
                 android.widget.RelativeLayout row = new android.widget.RelativeLayout(this);
                 row.setLayoutParams(new LinearLayout.LayoutParams(
                         LinearLayout.LayoutParams.MATCH_PARENT,
@@ -95,7 +91,6 @@ public class BookingDetailsActivity extends AppCompatActivity {
                 layoutTicketsList.addView(row);
             }
         } else {
-            // Fallback: display generic ticket count
             android.widget.RelativeLayout row = new android.widget.RelativeLayout(this);
             row.setLayoutParams(new LinearLayout.LayoutParams(
                     LinearLayout.LayoutParams.MATCH_PARENT,
@@ -130,11 +125,9 @@ public class BookingDetailsActivity extends AppCompatActivity {
             layoutTicketsList.addView(row);
         }
 
-        // Populate Snacks list dynamically
         LinearLayout layoutSnacksList = findViewById(R.id.layoutSnacksList);
         if (snacksList != null && !snacksList.isEmpty()) {
             for (String snack : snacksList) {
-                // snack string format: "2x Popcorn (PKR 17.98)"
                 String[] parts = snack.split("\\(");
                 String namePart = parts[0].trim();
                 String pricePart = "";
@@ -142,7 +135,6 @@ public class BookingDetailsActivity extends AppCompatActivity {
                     pricePart = parts[1].replace(")", "").replace("PKR ", "").trim();
                 }
 
-                // Create a row for each snack
                 android.widget.RelativeLayout row = new android.widget.RelativeLayout(this);
                 row.setLayoutParams(new LinearLayout.LayoutParams(
                         LinearLayout.LayoutParams.MATCH_PARENT,
@@ -183,26 +175,54 @@ public class BookingDetailsActivity extends AppCompatActivity {
             layoutSnacksList.addView(tvNone);
         }
 
-        // Final Total
         TextView tvFinalTotal = findViewById(R.id.tvFinalTotal);
         int total = (int) (ticketPrice + snacksTotal);
         tvFinalTotal.setText(total + " PKR");
 
-        // Buttons
         ImageButton btnBack = findViewById(R.id.btnBack);
         btnBack.setOnClickListener(v -> finish());
 
         ImageButton btnMenu = findViewById(R.id.btnMenu);
         btnMenu.setOnClickListener(v -> {
             Toast.makeText(this, "Menu opened", Toast.LENGTH_SHORT).show();
-            // Add menu functionality here
         });
 
         Button btnSendTicket = findViewById(R.id.btnSendTicket);
         btnSendTicket.setOnClickListener(v -> {
-            Toast.makeText(this, "Ticket Sent Successfully!", Toast.LENGTH_LONG).show();
-            // In a real app, this would maybe navigate to home or reset the flow
-            // finishAffinity(); // Optional: close all activities
+            String ticketDetails = formatTicketDetails(movieName, theaterName, hallNumber, date, time, selectedSeats, ticketPrice, snacksList, snacksTotal);
+
+            Intent intent = new Intent(Intent.ACTION_SEND);
+            intent.setType("text/plain");
+            intent.putExtra(Intent.EXTRA_SUBJECT, "CineFAST Booking Details");
+            intent.putExtra(Intent.EXTRA_TEXT, ticketDetails);
+            startActivity(Intent.createChooser(intent, "Share Ticket Via"));
         });
+    }
+
+    private String formatTicketDetails(String movieName, String theaterName, String hallNumber, String date, String time, ArrayList<String> selectedSeats, int ticketPrice, ArrayList<String> snacksList, double snacksTotal) {
+        StringBuilder sb = new StringBuilder();
+        sb.append("Movie: ").append(movieName).append("\n");
+        sb.append("Theater: ").append(theaterName).append("\n");
+        sb.append("Hall: ").append(hallNumber).append("\n");
+        sb.append("Date: ").append(date).append("\n");
+        sb.append("Time: ").append(time).append("\n");
+        sb.append("Seats: ");
+        if (selectedSeats != null && !selectedSeats.isEmpty()) {
+            sb.append(String.join(", ", selectedSeats));
+        } else {
+            sb.append("N/A");
+        }
+        sb.append("\n");
+        sb.append("Ticket Price: ").append(ticketPrice).append(" PKR\n");
+        sb.append("Snacks: ");
+        if (snacksList != null && !snacksList.isEmpty()) {
+            sb.append(String.join(", ", snacksList));
+        } else {
+            sb.append("None");
+        }
+        sb.append("\n");
+        sb.append("Snacks Total: ").append(snacksTotal).append(" PKR\n");
+        sb.append("Total: ").append((int)(ticketPrice + snacksTotal)).append(" PKR\n");
+        return sb.toString();
     }
 }

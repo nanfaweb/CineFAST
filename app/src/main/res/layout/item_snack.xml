@@ -5,7 +5,6 @@
     android:background="@drawable/snack_item_bg"
     android:padding="16dp">
 
-    <!-- Snack Image -->
     <ImageView
         android:id="@+id/snackImage"
         android:layout_width="80dp"
@@ -17,7 +16,6 @@
         android:scaleType="centerInside"
         android:contentDescription="@string/app_name"/>
 
-    <!-- Details Column -->
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -55,7 +53,6 @@
             android:layout_marginTop="8dp"/>
     </LinearLayout>
 
-    <!-- Quantity Controls -->
     <LinearLayout
         android:id="@+id/layoutQuantity"
         android:layout_width="wrap_content"

@@ -5,7 +5,6 @@
     android:orientation="vertical"
     android:background="@color/black">
 
-    <!-- ========== HEADER SECTION ========== -->
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -13,7 +12,6 @@
         android:padding="16dp"
         android:paddingBottom="24dp">
 
-        <!-- Back button -->
         <ImageButton
             android:id="@+id/btnBack"
             android:layout_width="36dp"
@@ -26,7 +24,6 @@
             android:scaleType="centerInside"
             android:alpha="0.8"/>
 
-        <!-- Center info -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -34,7 +31,6 @@
             android:orientation="vertical"
             android:gravity="center_horizontal">
 
-            <!-- Movie Title -->
             <TextView
                 android:id="@+id/tvMovieTitle"
                 android:layout_width="wrap_content"
@@ -45,7 +41,6 @@
                 android:textStyle="bold"
                 android:layout_marginBottom="8dp"/>
 
-            <!-- Badges row -->
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -87,14 +82,12 @@
                     android:textSize="13sp"/>
             </LinearLayout>
 
-            <!-- Theater / Hall / Date / Time row -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:gravity="center_horizontal">
 
-                <!-- Theater -->
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -118,7 +111,6 @@
                         android:textStyle="bold"/>
                 </LinearLayout>
 
-                <!-- Hall -->
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -142,7 +134,6 @@
                         android:textStyle="bold"/>
                 </LinearLayout>
 
-                <!-- Date -->
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -166,7 +157,6 @@
                         android:textStyle="bold"/>
                 </LinearLayout>
 
-                <!-- Time -->
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -193,7 +183,6 @@
         </LinearLayout>
     </RelativeLayout>
 
-    <!-- ========== SEAT AREA (scrollable) ========== -->
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -208,7 +197,6 @@
             android:paddingTop="16dp"
             android:paddingBottom="8dp">
 
-            <!-- Screen curve (upward arc with white shadow downward) -->
             <FrameLayout
                 android:layout_width="280dp"
                 android:layout_height="30dp"
@@ -224,7 +212,6 @@
                     android:background="@drawable/screen_curve"/>
             </FrameLayout>
 
-            <!-- Seat grid container (populated programmatically) -->
             <GridLayout
                 android:id="@+id/seatGrid"
                 android:layout_width="wrap_content"
@@ -234,7 +221,6 @@
                 android:layout_gravity="center_horizontal"
                 android:layout_marginBottom="24dp"/>
 
-            <!-- Legend row -->
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -242,7 +228,6 @@
                 android:gravity="center_vertical"
                 android:layout_marginBottom="8dp">
 
-                <!-- Booked legend -->
                 <View
                     android:layout_width="16dp"
                     android:layout_height="16dp"
@@ -256,7 +241,6 @@
                     android:textSize="12sp"
                     android:layout_marginEnd="20dp"/>
 
-                <!-- Yours legend -->
                 <View
                     android:layout_width="16dp"
                     android:layout_height="16dp"
@@ -270,7 +254,6 @@
                     android:textSize="12sp"
                     android:layout_marginEnd="20dp"/>
 
-                <!-- Available legend -->
                 <View
                     android:layout_width="16dp"
                     android:layout_height="16dp"
@@ -284,7 +267,6 @@
                     android:textSize="12sp"/>
             </LinearLayout>
 
-            <!-- Selected count and total -->
             <TextView
                 android:id="@+id/tvSeatInfo"
                 android:layout_width="wrap_content"
@@ -296,7 +278,6 @@
         </LinearLayout>
     </ScrollView>
 
-    <!-- ========== BOTTOM BUTTONS ========== -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

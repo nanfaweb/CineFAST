@@ -19,7 +19,6 @@ public class SeatSelectionActivity extends AppCompatActivity {
     private static final int GAP_COL_END = 5;
     private static final int PRICE_PER_SEAT = 1000;
 
-    // Seat states
     private static final int STATE_AVAILABLE = 0;
     private static final int STATE_SELECTED = 1;
     private static final int STATE_BOOKED = 2;
@@ -39,9 +38,12 @@ public class SeatSelectionActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_seat_selection);
 
-        // Receive movie name and poster resource ID from intent
         String movieName = getIntent().getStringExtra("MOVIE_NAME");
         int posterResourceId = getIntent().getIntExtra("POSTER_RESOURCE_ID", R.drawable.movie_poster_1);
+        String theaterName = getString(R.string.theater_name);
+        String hallNumber = getString(R.string.hall_name);
+        String date = getString(R.string.show_date);
+        String time = getString(R.string.show_time);
         TextView tvMovieTitle = findViewById(R.id.tvMovieTitle);
         if (movieName != null) {
             tvMovieTitle.setText(movieName);
@@ -51,24 +53,16 @@ public class SeatSelectionActivity extends AppCompatActivity {
         btnProceedSnacks = findViewById(R.id.btnProceedSnacks);
         Button btnBookSeats = findViewById(R.id.btnBookSeats);
 
-        // Back button
         findViewById(R.id.btnBack).setOnClickListener(v -> finish());
 
-        // Initialize seat states
         initSeatStates();
 
-        // Build seat grid
         GridLayout seatGrid = findViewById(R.id.seatGrid);
-        // Update column count in Java to match logic (though XML has 7, we need to
-        // update it or set it here)
         seatGrid.setColumnCount(COLS);
         seatGrid.setRowCount(ROWS);
         buildSeatGrid(seatGrid);
-
-        // Update info text
         updateSeatInfo();
 
-        // Book Seats button – directly confirm booking (skip snacks)
         btnBookSeats.setOnClickListener(v -> {
             if (selectedCount == 0) {
                 Toast.makeText(this, R.string.select_at_least_one_seat, Toast.LENGTH_SHORT).show();
@@ -81,11 +75,15 @@ public class SeatSelectionActivity extends AppCompatActivity {
                 intent.putExtra("SNACKS_TOTAL", 0.0);
                 intent.putStringArrayListExtra("SNACKS_LIST", new ArrayList<>());
                 intent.putStringArrayListExtra("SELECTED_SEATS", selectedSeatNames);
+
+                intent.putExtra("THEATER_NAME", theaterName);
+                intent.putExtra("HALL_NUMBER", hallNumber);
+                intent.putExtra("BOOKING_DATE", date);
+                intent.putExtra("BOOKING_TIME", time);
                 startActivity(intent);
             }
         });
 
-        // Proceed to Snacks button
         btnProceedSnacks.setOnClickListener(v -> {
             Intent intent = new Intent(SeatSelectionActivity.this, SnacksActivity.class);
             intent.putExtra("MOVIE_NAME", tvMovieTitle.getText().toString());
@@ -97,18 +95,13 @@ public class SeatSelectionActivity extends AppCompatActivity {
         });
     }
 
-    /**
-     * Pre-seed the seat grid: mark the aisle column and randomly mark some seats as
-     * booked.
-     */
     private void initSeatStates() {
-        // All seats start as available
+
         for (int r = 0; r < ROWS; r++) {
             for (int c = 0; c < COLS; c++) {
                 if (c >= GAP_COL_START && c <= GAP_COL_END) {
                     seatState[r][c] = STATE_GAP;
                 } else if ((r == 0 || r == ROWS - 1) && (c == 0 || c == COLS - 1)) {
-                    // Hide corner seats in first and last row
                     seatState[r][c] = STATE_HIDDEN;
                 } else {
                     seatState[r][c] = STATE_AVAILABLE;
@@ -116,11 +109,9 @@ public class SeatSelectionActivity extends AppCompatActivity {
             }
         }
 
-        // Pre-book specific seats to match the design (red seats)
-        // Adjust indices for new 10-col grid (0-3 | 4-5 | 6-9)
         bookSeat(1, 0);
-        bookSeat(1, 8); // Was 4 in 7-col (index 4 is now gap start, so likely 6-9 range)
-        bookSeat(1, 9); // Was 6
+        bookSeat(1, 8);
+        bookSeat(1, 9);
 
         bookSeat(4, 1);
         bookSeat(4, 2);
@@ -139,21 +130,17 @@ public class SeatSelectionActivity extends AppCompatActivity {
         }
     }
 
-    /**
-     * Build the seat grid programmatically.
-     */
     private void buildSeatGrid(GridLayout grid) {
-        int seatSize = (int) (32 * getResources().getDisplayMetrics().density); // Slightly smaller for 8x8
-        int seatMargin = (int) (3 * getResources().getDisplayMetrics().density); // 3dp
-        int gapWidth = (int) (8 * getResources().getDisplayMetrics().density); // Gap column width
+        int seatSize = (int) (32 * getResources().getDisplayMetrics().density);
+        int seatMargin = (int) (3 * getResources().getDisplayMetrics().density);
+        int gapWidth = (int) (8 * getResources().getDisplayMetrics().density);
 
         for (int r = 0; r < ROWS; r++) {
             for (int c = 0; c < COLS; c++) {
                 if (seatState[r][c] == STATE_GAP) {
-                    // Aisle spacer – invisible View
                     View spacer = new View(this);
                     GridLayout.LayoutParams params = new GridLayout.LayoutParams();
-                    params.width = gapWidth; // Using specific gap width per column
+                    params.width = gapWidth;
                     params.height = seatSize;
                     params.rowSpec = GridLayout.spec(r);
                     params.columnSpec = GridLayout.spec(c);
@@ -164,7 +151,6 @@ public class SeatSelectionActivity extends AppCompatActivity {
                 }
 
                 if (seatState[r][c] == STATE_HIDDEN) {
-                    // Hidden seat placeholder
                     View hidden = new View(this);
                     GridLayout.LayoutParams params = new GridLayout.LayoutParams();
                     params.width = seatSize;
@@ -188,10 +174,8 @@ public class SeatSelectionActivity extends AppCompatActivity {
                 params.columnSpec = GridLayout.spec(c);
                 seat.setLayoutParams(params);
 
-                // Apply background based on state
                 applySeatBackground(seat, seatState[r][c]);
 
-                // Click handling
                 if (seatState[r][c] != STATE_BOOKED) {
                     final int row = r;
                     final int col = c;
@@ -221,18 +205,13 @@ public class SeatSelectionActivity extends AppCompatActivity {
     }
 
     private String getSeatName(int row, int col) {
-        // Row 0 -> A, Row 1 -> B, etc.
         char rowChar = (char) ('A' + row);
-
-        // Col 0-3 -> Seat 1-4
-        // Col 6-9 -> Seat 5-8
         int seatNum;
+
         if (col < GAP_COL_START) {
             seatNum = col + 1;
         } else {
-            // col 6 is seat 5
-            // col 6 - 2 = 4 + 1 = 5
-            seatNum = col - 1; // cols 6,7,8,9 -> 5,6,7,8
+            seatNum = col - 1;
         }
 
         return "Row " + rowChar + ", Seat " + seatNum;
@@ -258,7 +237,6 @@ public class SeatSelectionActivity extends AppCompatActivity {
                 + "  •  " + getString(R.string.total_label, total);
         tvSeatInfo.setText(info);
 
-        // Enable/disable Proceed to Snacks button
         btnProceedSnacks.setEnabled(selectedCount > 0);
         btnProceedSnacks.setAlpha(selectedCount > 0 ? 1.0f : 0.5f);
 

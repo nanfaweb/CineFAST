@@ -6,7 +6,6 @@
     android:background="@color/black"
     android:padding="16dp">
 
-    <!-- Header Section -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -53,22 +52,22 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <!-- Popcorn Item -->
+            <!-- Popcorn -->
             <include layout="@layout/item_snack" android:id="@+id/snackPopcorn"/>
 
             <Space android:layout_width="match_parent" android:layout_height="16dp"/>
 
-            <!-- Nachos Item -->
+            <!-- Nachos -->
             <include layout="@layout/item_snack" android:id="@+id/snackNachos"/>
 
             <Space android:layout_width="match_parent" android:layout_height="16dp"/>
 
-            <!-- Soft Drink Item -->
+            <!-- Soft Drink -->
             <include layout="@layout/item_snack" android:id="@+id/snackDrink"/>
 
             <Space android:layout_width="match_parent" android:layout_height="16dp"/>
 
-            <!-- Candy Item -->
+            <!-- Candy -->
             <include layout="@layout/item_snack" android:id="@+id/snackCandy"/>
 
         </LinearLayout>

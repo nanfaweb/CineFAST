@@ -19,7 +19,6 @@ public class SnacksActivity extends AppCompatActivity {
     private int selectedSeatCount;
     private int ticketPrice;
 
-    // Snack data class
     public static class SnackItem implements Serializable {
         String name;
         String description;
@@ -44,24 +43,22 @@ public class SnacksActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_snacks);
 
-        // Get data from previous activity
         movieName = getIntent().getStringExtra("MOVIE_NAME");
-
         selectedSeatCount = getIntent().getIntExtra("SELECTED_SEAT_COUNT", 0);
         ticketPrice = getIntent().getIntExtra("TOTAL_PRICE", 0);
-        // Get poster resource ID from intent
         int posterResourceId = getIntent().getIntExtra("POSTER_RESOURCE_ID", R.drawable.movie_poster_1);
+        String theaterName = getString(R.string.theater_name);
+        String hallNumber = getString(R.string.hall_name);
+        String date = getString(R.string.show_date);
+        String time = getString(R.string.show_time);
 
-        // Initialize Data
         snacks.add(new SnackItem("Popcorn", "Large / Buttered", 250, R.drawable.popcorn_img));
         snacks.add(new SnackItem("Nachos", "With Cheese Dip", 270, R.drawable.nachos_img));
         snacks.add(new SnackItem("Soft Drink", "Large / Any Flavor", 100, R.drawable.softdrink_img));
         snacks.add(new SnackItem("Candy Mix", "Assorted Candies", 120, R.drawable.candymix_img));
 
-        // Back button
         findViewById(R.id.btnBack).setOnClickListener(v -> finish());
 
-        // Bind UI
         setupSnackItem(0, R.id.snackPopcorn);
         setupSnackItem(1, R.id.snackNachos);
         setupSnackItem(2, R.id.snackDrink);
@@ -75,7 +72,6 @@ public class SnacksActivity extends AppCompatActivity {
             intent.putExtra("SELECTED_SEAT_COUNT", selectedSeatCount);
             intent.putExtra("TICKET_PRICE", ticketPrice);
 
-            // Calculate total snack price
             double totalSnacks = 0;
             ArrayList<String> snackDetails = new ArrayList<>();
             for (SnackItem item : snacks) {
@@ -84,13 +80,17 @@ public class SnacksActivity extends AppCompatActivity {
                     snackDetails.add(item.quantity + "x " + item.name + " (PKR " + (item.price * item.quantity) + ")");
                 }
             }
+
             intent.putExtra("SNACKS_TOTAL", totalSnacks);
             intent.putStringArrayListExtra("SNACKS_LIST", snackDetails);
 
-            // Pass selected seats to next activity
             ArrayList<String> selectedSeats = getIntent().getStringArrayListExtra("SELECTED_SEATS");
             intent.putStringArrayListExtra("SELECTED_SEATS", selectedSeats);
 
+            intent.putExtra("THEATER_NAME", theaterName);
+            intent.putExtra("HALL_NUMBER", hallNumber);
+            intent.putExtra("BOOKING_DATE", date);
+            intent.putExtra("BOOKING_TIME", time);
             startActivity(intent);
         });
     }
