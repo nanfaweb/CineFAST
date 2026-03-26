@@ -75,4 +75,10 @@
     <string name="date_icon_desc">Date</string>
     <string name="time_icon_desc">Time</string>
     <string name="movie_poster_desc">Movie Poster</string>
+
+    <string name="viewLastBooking">View Last Booking</string>
+    <string name="lastBookingTitle">Last Booking</string>
+    <string name="noPreviousBooking">No previous booking found.</string>
+    <string name="comingSoonText">Coming Soon</string>
+    <string name="watchTrailerText">Watch Trailer</string>
 </resources>
