@@ -33,6 +33,7 @@ public class SeatSelectionFragment extends Fragment {
     private static final int STATE_HIDDEN = -2;
 
     private int[][] seatState = new int[ROWS][COLS];
+    private boolean isInitialized = false;
     private View[][] seatViews = new View[ROWS][COLS];
     private int selectedCount = 0;
     private ArrayList<String> selectedSeatNames = new ArrayList<>();
@@ -78,7 +79,10 @@ public class SeatSelectionFragment extends Fragment {
         LinearLayout comingSoonButtons = view.findViewById(R.id.comingSoonButtons);
 
         // Initialize seat states and build grid
-        initSeatStates();
+        if (!isInitialized) {
+            initSeatStates();
+            isInitialized = true;
+        }
         GridLayout seatGrid = view.findViewById(R.id.seatGrid);
         seatGrid.setColumnCount(COLS);
         seatGrid.setRowCount(ROWS);
