@@ -46,27 +46,10 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
         holder.tvMovieTitle.setText(movie.getName());
         holder.tvMovieDetails.setText(movie.getGenreWithDuration());
 
-        if (movie.isNowShowing()) {
-            holder.btnBookOrStatus.setText(context.getString(R.string.book_seats_text));
-            holder.btnBookOrStatus.setEnabled(true);
-            holder.btnBookOrStatus.setOnClickListener(v -> listener.onBookClick(movie));
-            holder.btnBookOrStatus.setAlpha(1.0f);
-        } else {
-            holder.btnBookOrStatus.setText(context.getString(R.string.comingSoonText));
-            // Keep it enabled to be clickable to trigger navigation if needed, 
-            // but the logic inside SeatSelectionFragment will handle disabled seats
-            // Or we just don't handle clicks if it's strictly "Coming Soon" disables everything
-            holder.btnBookOrStatus.setOnClickListener(v -> listener.onBookClick(movie));
-            
-            // As per requirements: "Seats must not be clickable. Instead of original buttons display Coming Soon (disabled button)"
-            // Wait, the requirement says "Instead of the original buttons, display: 1. Coming Soon (disabled button) 2. Watch Trailer"
-            // This behavior is for SeatSelectionFragment.
-            // But here on the Home screen in Coming soon, maybe it's still "Book Seats" to view the details/trailer, or we just let it be book seats. 
-            // Actually, we can just say "View Details" or keep it "Book Seats".
-            // Let's keep it clickable here so user can go to SeatSelectionFragment. 
-            holder.btnBookOrStatus.setText(context.getString(R.string.book_seats_text));
-            holder.btnBookOrStatus.setOnClickListener(v -> listener.onBookClick(movie));
-        }
+        // Both Now Showing and Coming Soon use "Book Seats" on the home screen.
+        // The differentiated behavior happens inside SeatSelectionFragment.
+        holder.btnBookOrStatus.setText(context.getString(R.string.book_seats_text));
+        holder.btnBookOrStatus.setOnClickListener(v -> listener.onBookClick(movie));
 
         holder.btnTrailer.setOnClickListener(v -> {
             Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(movie.getTrailerUrl()));
