@@ -38,5 +38,13 @@
     "posterDrawable": "movie_poster_5",
     "trailerUrl": "https://youtu.be/x7uLutVRBfI",
     "isNowShowing": false
+  },
+  {
+    "name": "Demon Slayer: Infinity Castle",
+    "genre": "Anime",
+    "duration": 155,
+    "posterDrawable": "movie_poster_5",
+    "trailerUrl": "https://youtu.be/x7uLutVRBfI",
+    "isNowShowing": false
   }
 ]
