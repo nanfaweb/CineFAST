@@ -64,6 +64,10 @@ public class SeatSelectionFragment extends Fragment {
         TextView tvMovieTitle = view.findViewById(R.id.tvMovieTitle);
         tvMovieTitle.setText(movieName);
 
+        TextView tvShowDate = view.findViewById(R.id.tvShowDate);
+        String showDate = getArguments() != null ? getArguments().getString("showDate", getString(R.string.show_date)) : getString(R.string.show_date);
+        tvShowDate.setText(showDate);
+
         // Back button
         view.findViewById(R.id.btnBack).setOnClickListener(v -> {
             if (getActivity() != null) {
