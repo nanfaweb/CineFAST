@@ -81,8 +81,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void showMyBookingsFragment() {
-        // Will be implemented fully in Phase 7
-        // replaceFragment(new MyBookingsFragment(), false);
+        replaceFragment(new MyBookingsFragment(), true);
     }
 
     public void showHomeFragment() {
