@@ -111,9 +111,10 @@ public class SeatSelectionFragment extends Fragment {
             });
 
             btnProceedSnacks.setOnClickListener(v -> {
+                String posterDrawable = getArguments() != null ? getArguments().getString("posterDrawable", "") : "";
                 if (getActivity() instanceof MainActivity) {
                     ((MainActivity) getActivity()).showSnacksFragment(
-                            movieName, posterResId, selectedCount,
+                            movieName, posterResId, posterDrawable, selectedCount,
                             selectedCount * PRICE_PER_SEAT, selectedSeatNames);
                 }
             });

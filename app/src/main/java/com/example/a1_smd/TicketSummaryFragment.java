@@ -18,14 +18,25 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ServerValue;
 
 public class TicketSummaryFragment extends Fragment {
+
+    private DatabaseReference mDatabase;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_ticket_summary, container, false);
+
+        mDatabase = FirebaseDatabase.getInstance().getReference();
 
         // Read all booking data from arguments
         String movieName = "";
@@ -40,9 +51,12 @@ public class TicketSummaryFragment extends Fragment {
         ArrayList<String> snacksList = new ArrayList<>();
         ArrayList<String> selectedSeats = new ArrayList<>();
 
+        String posterDrawable = "";
+
         if (getArguments() != null) {
             movieName = getArguments().getString("movieName", "");
             posterResId = getArguments().getInt("posterResId", R.drawable.movie_poster_1);
+            posterDrawable = getArguments().getString("posterDrawable", "");
             theaterName = getArguments().getString("theaterName", theaterName);
             hallNumber = getArguments().getString("hallNumber", hallNumber);
             date = getArguments().getString("bookingDate", date);
@@ -56,13 +70,17 @@ public class TicketSummaryFragment extends Fragment {
             if (selectedSeats == null) selectedSeats = new ArrayList<>();
         }
 
+        // Save to Firebase
+        saveBookingToFirebase(movieName, seatCount, (int) (ticketPrice + snacksTotal), 
+                date + " " + time, posterDrawable);
+
         // Save to SharedPreferences
         SharedPreferences prefs = requireActivity()
                 .getSharedPreferences("BookingPrefs", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = prefs.edit();
         editor.putString("movieName", movieName);
         editor.putInt("seatCount", seatCount);
-        editor.putInt("totalPrice", ticketPrice);
+        editor.putInt("totalPrice", (int) (ticketPrice + snacksTotal));
         editor.apply();
 
         // Bind movie info
@@ -221,5 +239,22 @@ public class TicketSummaryFragment extends Fragment {
         sb.append("Snacks Total: ").append(snacksTotal).append(" PKR\n");
         sb.append("Total: ").append((int) (ticketPrice + snacksTotal)).append(" PKR\n");
         return sb.toString();
+    }
+
+    private void saveBookingToFirebase(String movieName, int seats, int total, String dateTime, String poster) {
+        String userId = FirebaseAuth.getInstance().getCurrentUser() != null 
+                ? FirebaseAuth.getInstance().getCurrentUser().getUid() : "anonymous";
+        
+        DatabaseReference bookingRef = mDatabase.child("bookings").child(userId).push();
+        
+        Map<String, Object> bookingData = new HashMap<>();
+        bookingData.put("movieName", movieName);
+        bookingData.put("seats", seats);
+        bookingData.put("totalPrice", total);
+        bookingData.put("dateTime", dateTime);
+        bookingData.put("posterDrawable", poster);
+        bookingData.put("timestamp", ServerValue.TIMESTAMP);
+        
+        bookingRef.setValue(bookingData);
     }
 }

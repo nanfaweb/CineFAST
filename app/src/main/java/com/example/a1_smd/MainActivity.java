@@ -15,11 +15,21 @@ import androidx.fragment.app.FragmentTransaction;
 import com.google.android.material.navigation.NavigationView;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
     private DrawerLayout drawerLayout;
     private SessionManager sessionManager;
+    private List<Snack> selectedSnacksCache = null;
+
+    public List<Snack> getSelectedSnacksCache() {
+        return selectedSnacksCache;
+    }
+
+    public void setSelectedSnacksCache(List<Snack> snacks) {
+        this.selectedSnacksCache = snacks;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -80,9 +90,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void showSeatSelectionFragment(Movie movie) {
+        setSelectedSnacksCache(null);
         Bundle args = new Bundle();
         args.putString("movieName", movie.getName());
         args.putInt("posterResId", movie.getPosterResId());
+        args.putString("posterDrawable", movie.getPosterDrawable());
         args.putString("trailerUrl", movie.getTrailerUrl());
         args.putBoolean("isNowShowing", movie.isNowShowing());
 
@@ -91,11 +103,12 @@ public class MainActivity extends AppCompatActivity {
         replaceFragment(fragment, true);
     }
 
-    public void showSnacksFragment(String movieName, int posterResId, int seatCount,
+    public void showSnacksFragment(String movieName, int posterResId, String posterDrawable, int seatCount,
                                     int ticketPrice, ArrayList<String> selectedSeats) {
         Bundle args = new Bundle();
         args.putString("movieName", movieName);
         args.putInt("posterResId", posterResId);
+        args.putString("posterDrawable", posterDrawable);
         args.putInt("selectedSeatCount", seatCount);
         args.putInt("totalPrice", ticketPrice);
         args.putStringArrayList("selectedSeats", selectedSeats);

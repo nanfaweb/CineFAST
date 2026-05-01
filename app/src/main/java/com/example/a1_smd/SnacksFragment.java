@@ -39,11 +39,30 @@ public class SnacksFragment extends Fragment {
             selectedSeats = getArguments().getStringArrayList("selectedSeats");
         }
 
-        // Populate snack data using Snack model class
-        snackList.add(new Snack("Popcorn", "Large / Buttered", 250, R.drawable.popcorn_img));
-        snackList.add(new Snack("Nachos", "With Cheese Dip", 270, R.drawable.nachos_img));
-        snackList.add(new Snack("Soft Drink", "Large / Any Flavor", 100, R.drawable.softdrink_img));
-        snackList.add(new Snack("Candy Mix", "Assorted Candies", 120, R.drawable.candymix_img));
+        // Check if MainActivity has a cached selection of snacks
+        MainActivity mainActivity = (MainActivity) getActivity();
+        if (mainActivity != null && mainActivity.getSelectedSnacksCache() != null) {
+            snackList = mainActivity.getSelectedSnacksCache();
+        } else {
+            // Load fresh from DB if no cache exists
+            SnackDatabaseHelper dbHelper = new SnackDatabaseHelper(requireContext());
+            snackList = dbHelper.getAllSnacks();
+
+            // Resolve drawable resource IDs from image names
+            for (Snack snack : snackList) {
+                int resId = getResources().getIdentifier(
+                        snack.getImageName(), "drawable", requireContext().getPackageName());
+                if (resId == 0) {
+                    resId = R.drawable.popcorn_img; // Fallback
+                }
+                snack.setImageResId(resId);
+            }
+            
+            // Initial cache save
+            if (mainActivity != null) {
+                mainActivity.setSelectedSnacksCache(snackList);
+            }
+        }
 
         // Set up custom ListView with SnackAdapter
         ListView lvSnacks = view.findViewById(R.id.lvSnacks);
@@ -57,9 +76,13 @@ public class SnacksFragment extends Fragment {
             }
         });
 
-        // Confirm button — gather quantities and navigate to TicketSummaryFragment
+        // Confirm button
         Button btnConfirm = view.findViewById(R.id.btnConfirmSnacks);
         btnConfirm.setOnClickListener(v -> {
+            // Save current state to cache before navigating away
+            if (mainActivity != null) {
+                mainActivity.setSelectedSnacksCache(snackList);
+            }
 
             double snacksTotal = 0;
             ArrayList<String> snackDetails = new ArrayList<>();
@@ -77,9 +100,12 @@ public class SnacksFragment extends Fragment {
             String date = getString(R.string.show_date);
             String time = getString(R.string.show_time);
 
+            String posterDrawable = getArguments() != null ? getArguments().getString("posterDrawable", "") : "";
+
             Bundle bookingData = new Bundle();
             bookingData.putString("movieName", movieName);
             bookingData.putInt("posterResId", posterResId);
+            bookingData.putString("posterDrawable", posterDrawable);
             bookingData.putInt("selectedSeatCount", selectedSeatCount);
             bookingData.putInt("ticketPrice", ticketPrice);
             bookingData.putDouble("snacksTotal", snacksTotal);

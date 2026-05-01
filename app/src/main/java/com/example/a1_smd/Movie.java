@@ -5,6 +5,7 @@ public class Movie {
     private String genre;
     private int duration;
     private int posterResId;
+    private String posterDrawable; // Field added for Firebase storage/retrieval
     private String trailerUrl;
     private boolean isNowShowing;
 
@@ -17,31 +18,13 @@ public class Movie {
         this.isNowShowing = isNowShowing;
     }
 
-    public String getName() {
-        return name;
-    }
+    public String getName() { return name; }
+    public String getGenre() { return genre; }
+    public int getDuration() { return duration; }
+    public int getPosterResId() { return posterResId; }
+    public String getTrailerUrl() { return trailerUrl; }
+    public boolean isNowShowing() { return isNowShowing; }
 
-    public String getGenre() {
-        return genre;
-    }
-
-    public int getDuration() {
-        return duration;
-    }
-
-    public int getPosterResId() {
-        return posterResId;
-    }
-
-    public String getTrailerUrl() {
-        return trailerUrl;
-    }
-
-    public boolean isNowShowing() {
-        return isNowShowing;
-    }
-
-    public String getGenreWithDuration() {
-        return genre + " / " + duration + " min";
-    }
+    public String getPosterDrawable() { return posterDrawable; }
+    public void setPosterDrawable(String posterDrawable) { this.posterDrawable = posterDrawable; }
 }

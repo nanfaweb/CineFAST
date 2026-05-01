@@ -43,7 +43,9 @@ public class MovieJsonParser {
                         posterResId = R.drawable.movie_poster_1;
                     }
 
-                    movieList.add(new Movie(name, genre, duration, posterResId, trailerUrl, isNowShowing));
+                    Movie movie = new Movie(name, genre, duration, posterResId, trailerUrl, isNowShowing);
+                    movie.setPosterDrawable(drawableName);
+                    movieList.add(movie);
                 }
             }
         } catch (Exception e) {
