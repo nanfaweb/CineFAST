@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "457774517734",
+    "project_id": "cinefast-nanfa",
+    "storage_bucket": "cinefast-nanfa.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:457774517734:android:753cd857a55f6f98c61a27",
+        "android_client_info": {
+          "package_name": "com.example.a1_smd"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDcwC8cU36ae6lA031qI2kP5u-HADRuJLA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -28,12 +28,15 @@ public class SplashActivity extends AppCompatActivity {
         rotate.start();
 
         new Handler(Looper.getMainLooper()).postDelayed(() -> {
-
-            Intent intent = new Intent(SplashActivity.this, OnboardingActivity.class);
+            SessionManager session = new SessionManager(SplashActivity.this);
+            Intent intent;
+            if (session.isLoggedIn()) {
+                intent = new Intent(SplashActivity.this, MainActivity.class);
+            } else {
+                intent = new Intent(SplashActivity.this, OnboardingActivity.class);
+            }
             startActivity(intent);
-
             finish();
-
         }, SPLASH_DURATION);
     }
 }
