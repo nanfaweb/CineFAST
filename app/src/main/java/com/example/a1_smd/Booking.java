@@ -2,6 +2,7 @@ package com.example.a1_smd;
 
 public class Booking {
     private String id;
+    private String userId;
     private String movieName;
     private int seats;
     private int totalPrice;
@@ -13,8 +14,9 @@ public class Booking {
         // Required empty constructor for Firebase
     }
 
-    public Booking(String id, String movieName, int seats, int totalPrice, String dateTime, String posterDrawable, long timestamp) {
+    public Booking(String id, String userId, String movieName, int seats, int totalPrice, String dateTime, String posterDrawable, long timestamp) {
         this.id = id;
+        this.userId = userId;
         this.movieName = movieName;
         this.seats = seats;
         this.totalPrice = totalPrice;
@@ -25,6 +27,9 @@ public class Booking {
 
     public String getId() { return id; }
     public void setId(String id) { this.id = id; }
+
+    public String getUserId() { return userId; }
+    public void setUserId(String userId) { this.userId = userId; }
 
     public String getMovieName() { return movieName; }
     public int getSeats() { return seats; }

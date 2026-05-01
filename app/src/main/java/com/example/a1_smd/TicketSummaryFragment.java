@@ -248,6 +248,7 @@ public class TicketSummaryFragment extends Fragment {
         DatabaseReference bookingRef = mDatabase.child("bookings").child(userId).push();
         
         Map<String, Object> bookingData = new HashMap<>();
+        bookingData.put("userId", userId);
         bookingData.put("movieName", movieName);
         bookingData.put("seats", seats);
         bookingData.put("totalPrice", total);
