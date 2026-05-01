@@ -24,29 +24,7 @@ public class ComingSoonFragment extends Fragment implements MovieAdapter.OnMovie
         RecyclerView recyclerView = view.findViewById(R.id.recyclerViewMovies);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
-        List<Movie> movies = new ArrayList<>();
-        movies.add(new Movie(
-                getString(R.string.movie_3_title),
-                "Crime", 162,
-                R.drawable.movie_poster_3,
-                "https://youtu.be/UUkG37KSWf0",
-                false
-        ));
-        movies.add(new Movie(
-                getString(R.string.movie_5_title),
-                "Anime", 155,
-                R.drawable.movie_poster_5,
-                "https://youtu.be/x7uLutVRBfI",
-                false
-        ));
-        // Requirement: minimum 3. User requested to reuse one. Repeating movie 5 here.
-        movies.add(new Movie(
-                getString(R.string.movie_5_title),
-                "Anime", 155,
-                R.drawable.movie_poster_5,
-                "https://youtu.be/x7uLutVRBfI",
-                false
-        ));
+        List<Movie> movies = MovieJsonParser.loadMovies(getContext(), false);
 
         MovieAdapter adapter = new MovieAdapter(getContext(), movies, this);
         recyclerView.setAdapter(adapter);

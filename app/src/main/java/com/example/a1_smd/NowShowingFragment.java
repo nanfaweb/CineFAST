@@ -24,28 +24,7 @@ public class NowShowingFragment extends Fragment implements MovieAdapter.OnMovie
         RecyclerView recyclerView = view.findViewById(R.id.recyclerViewMovies);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
-        List<Movie> movies = new ArrayList<>();
-        movies.add(new Movie(
-                getString(R.string.movie_1_title),
-                "Crime", 175,
-                R.drawable.movie_poster_1,
-                "https://youtu.be/UaVTIH8mujA",
-                true
-        ));
-        movies.add(new Movie(
-                getString(R.string.movie_2_title),
-                "Crime", 202,
-                R.drawable.movie_poster_2,
-                "https://youtu.be/9O1Iy9od7-A",
-                true
-        ));
-        movies.add(new Movie(
-                getString(R.string.movie_4_title),
-                "Thriller", 106,
-                R.drawable.movie_poster_4,
-                "https://youtu.be/Q0eCiCinc4E",
-                true
-        ));
+        List<Movie> movies = MovieJsonParser.loadMovies(getContext(), true);
 
         MovieAdapter adapter = new MovieAdapter(getContext(), movies, this);
         recyclerView.setAdapter(adapter);

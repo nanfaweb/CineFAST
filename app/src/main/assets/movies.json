@@ -1,0 +1,42 @@
+[
+  {
+    "name": "The Godfather",
+    "genre": "Crime",
+    "duration": 175,
+    "posterDrawable": "movie_poster_1",
+    "trailerUrl": "https://youtu.be/UaVTIH8mujA",
+    "isNowShowing": true
+  },
+  {
+    "name": "The Godfather Part II",
+    "genre": "Crime",
+    "duration": 202,
+    "posterDrawable": "movie_poster_2",
+    "trailerUrl": "https://youtu.be/9O1Iy9od7-A",
+    "isNowShowing": true
+  },
+  {
+    "name": "The Godfather Part III",
+    "genre": "Crime",
+    "duration": 162,
+    "posterDrawable": "movie_poster_3",
+    "trailerUrl": "https://youtu.be/UUkG37KSWf0",
+    "isNowShowing": false
+  },
+  {
+    "name": "The Usual Suspects",
+    "genre": "Thriller",
+    "duration": 106,
+    "posterDrawable": "movie_poster_4",
+    "trailerUrl": "https://youtu.be/Q0eCiCinc4E",
+    "isNowShowing": true
+  },
+  {
+    "name": "Demon Slayer: Infinity Castle",
+    "genre": "Anime",
+    "duration": 155,
+    "posterDrawable": "movie_poster_5",
+    "trailerUrl": "https://youtu.be/x7uLutVRBfI",
+    "isNowShowing": false
+  }
+]
