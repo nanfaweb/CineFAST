@@ -58,6 +58,3 @@ The application features a modern, high-contrast dark theme with:
 - Glassmorphism UI elements.
 - Vibrant accent colors for buttons and indicators.
 - Smooth transitions between booking phases.
-
----
-*Modernized with 🎥 by the CineFAST Team.*
