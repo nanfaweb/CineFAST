@@ -18,6 +18,10 @@ public class Movie {
         this.isNowShowing = isNowShowing;
     }
 
+    public String getGenreWithDuration() {
+        return genre + " | " + duration + " min";
+    }
+
     public String getName() { return name; }
     public String getGenre() { return genre; }
     public int getDuration() { return duration; }
