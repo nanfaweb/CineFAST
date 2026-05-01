@@ -47,45 +47,12 @@ public class HomeFragment extends Fragment {
                 }
         ).attach();
 
-        btnMenu.setOnClickListener(v -> showPopupMenu(v));
+        btnMenu.setOnClickListener(v -> {
+            if (getActivity() instanceof MainActivity) {
+                ((MainActivity) getActivity()).openDrawer();
+            }
+        });
 
         return view;
-    }
-
-    private void showPopupMenu(View view) {
-        PopupMenu popup = new PopupMenu(requireContext(), view);
-        popup.getMenu().add(0, 1, 0, getString(R.string.viewLastBooking));
-        popup.setOnMenuItemClickListener(item -> {
-            if (item.getItemId() == 1) {
-                showLastBooking();
-                return true;
-            }
-            return false;
-        });
-        popup.show();
-    }
-
-    private void showLastBooking() {
-        SharedPreferences prefs = requireActivity().getSharedPreferences("BookingPrefs", Context.MODE_PRIVATE);
-        String movieName = prefs.getString("movieName", null);
-        
-        AlertDialog.Builder builder = new AlertDialog.Builder(requireContext());
-        builder.setTitle(getString(R.string.lastBookingTitle));
-        
-        if (movieName != null) {
-            int seats = prefs.getInt("seatCount", 0);
-            int total = prefs.getInt("totalPrice", 0);
-            
-            String message = "Movie: " + movieName + "\n" +
-                             "Seats: " + seats + "\n" +
-                             "Total Price: " + total + " PKR";
-                             
-            builder.setMessage(message);
-        } else {
-            builder.setMessage(getString(R.string.noPreviousBooking));
-        }
-        
-        builder.setPositiveButton("OK", (dialog, which) -> dialog.dismiss());
-        builder.show();
     }
 }
