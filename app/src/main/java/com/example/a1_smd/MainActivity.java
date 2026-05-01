@@ -94,6 +94,7 @@ public class MainActivity extends AppCompatActivity {
         args.putString("movieName", movie.getName());
         args.putInt("posterResId", movie.getPosterResId());
         args.putString("posterDrawable", movie.getPosterDrawable());
+        args.putString("showDate", movie.getShowDate());
         args.putString("trailerUrl", movie.getTrailerUrl());
         args.putBoolean("isNowShowing", movie.isNowShowing());
 
@@ -102,12 +103,13 @@ public class MainActivity extends AppCompatActivity {
         replaceFragment(fragment, true);
     }
 
-    public void showSnacksFragment(String movieName, int posterResId, String posterDrawable, int seatCount,
+    public void showSnacksFragment(String movieName, int posterResId, String posterDrawable, String showDate, int seatCount,
                                     int ticketPrice, ArrayList<String> selectedSeats) {
         Bundle args = new Bundle();
         args.putString("movieName", movieName);
         args.putInt("posterResId", posterResId);
         args.putString("posterDrawable", posterDrawable);
+        args.putString("showDate", showDate);
         args.putInt("selectedSeatCount", seatCount);
         args.putInt("totalPrice", ticketPrice);
         args.putStringArrayList("selectedSeats", selectedSeats);

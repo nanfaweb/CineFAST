@@ -43,7 +43,9 @@ public class MovieJsonParser {
                         posterResId = R.drawable.movie_poster_1;
                     }
 
-                    Movie movie = new Movie(name, genre, duration, posterResId, trailerUrl, isNowShowing);
+                    String showDate = obj.optString("showDate", "15.02.2026");
+
+                    Movie movie = new Movie(name, genre, duration, posterResId, trailerUrl, isNowShowing, showDate);
                     movie.setPosterDrawable(drawableName);
                     movieList.add(movie);
                 }

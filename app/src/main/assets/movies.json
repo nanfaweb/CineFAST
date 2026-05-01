@@ -5,7 +5,8 @@
     "duration": 175,
     "posterDrawable": "movie_poster_1",
     "trailerUrl": "https://youtu.be/UaVTIH8mujA",
-    "isNowShowing": true
+    "isNowShowing": true,
+    "showDate": "01.05.2027"
   },
   {
     "name": "The Godfather Part II",
@@ -13,7 +14,8 @@
     "duration": 202,
     "posterDrawable": "movie_poster_2",
     "trailerUrl": "https://youtu.be/9O1Iy9od7-A",
-    "isNowShowing": true
+    "isNowShowing": true,
+    "showDate": "15.02.2026"
   },
   {
     "name": "The Godfather Part III",
@@ -21,7 +23,8 @@
     "duration": 162,
     "posterDrawable": "movie_poster_3",
     "trailerUrl": "https://youtu.be/UUkG37KSWf0",
-    "isNowShowing": false
+    "isNowShowing": false,
+    "showDate": "15.02.2026"
   },
   {
     "name": "The Usual Suspects",
@@ -29,7 +32,8 @@
     "duration": 106,
     "posterDrawable": "movie_poster_4",
     "trailerUrl": "https://youtu.be/Q0eCiCinc4E",
-    "isNowShowing": true
+    "isNowShowing": true,
+    "showDate": "15.02.2026"
   },
   {
     "name": "Demon Slayer: Infinity Castle",
@@ -37,7 +41,8 @@
     "duration": 155,
     "posterDrawable": "movie_poster_5",
     "trailerUrl": "https://youtu.be/x7uLutVRBfI",
-    "isNowShowing": false
+    "isNowShowing": false,
+    "showDate": "15.02.2026"
   },
   {
     "name": "Demon Slayer: Infinity Castle",
@@ -45,6 +50,7 @@
     "duration": 155,
     "posterDrawable": "movie_poster_5",
     "trailerUrl": "https://youtu.be/x7uLutVRBfI",
-    "isNowShowing": false
+    "isNowShowing": false,
+    "showDate": "15.02.2026"
   }
 ]

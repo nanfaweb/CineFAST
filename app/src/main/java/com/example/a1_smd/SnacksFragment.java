@@ -101,6 +101,7 @@ public class SnacksFragment extends Fragment {
             String time = getString(R.string.show_time);
 
             String posterDrawable = getArguments() != null ? getArguments().getString("posterDrawable", "") : "";
+            String showDate = getArguments() != null ? getArguments().getString("showDate", getString(R.string.show_date)) : getString(R.string.show_date);
 
             Bundle bookingData = new Bundle();
             bookingData.putString("movieName", movieName);
@@ -113,7 +114,7 @@ public class SnacksFragment extends Fragment {
             bookingData.putStringArrayList("selectedSeats", selectedSeats);
             bookingData.putString("theaterName", theaterName);
             bookingData.putString("hallNumber", hallNumber);
-            bookingData.putString("bookingDate", date);
+            bookingData.putString("bookingDate", showDate);
             bookingData.putString("bookingTime", time);
 
             if (getActivity() instanceof MainActivity) {

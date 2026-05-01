@@ -112,9 +112,10 @@ public class SeatSelectionFragment extends Fragment {
 
             btnProceedSnacks.setOnClickListener(v -> {
                 String posterDrawable = getArguments() != null ? getArguments().getString("posterDrawable", "") : "";
+                String showDate = getArguments() != null ? getArguments().getString("showDate", getString(R.string.show_date)) : getString(R.string.show_date);
                 if (getActivity() instanceof MainActivity) {
                     ((MainActivity) getActivity()).showSnacksFragment(
-                            movieName, posterResId, posterDrawable, selectedCount,
+                            movieName, posterResId, posterDrawable, showDate, selectedCount,
                             selectedCount * PRICE_PER_SEAT, selectedSeatNames);
                 }
             });
@@ -142,12 +143,13 @@ public class SeatSelectionFragment extends Fragment {
     private Bundle createBookingBundle(boolean hasSnacks) {
         String theaterName = getString(R.string.theater_name);
         String hallNumber = getString(R.string.hall_name);
-        String date = getString(R.string.show_date);
+        String date = getArguments() != null ? getArguments().getString("showDate", getString(R.string.show_date)) : getString(R.string.show_date);
         String time = getString(R.string.show_time);
 
         Bundle data = new Bundle();
         data.putString("movieName", movieName);
         data.putInt("posterResId", posterResId);
+        data.putString("posterDrawable", getArguments() != null ? getArguments().getString("posterDrawable", "") : "");
         data.putInt("selectedSeatCount", selectedCount);
         data.putInt("ticketPrice", selectedCount * PRICE_PER_SEAT);
         data.putDouble("snacksTotal", 0.0);
